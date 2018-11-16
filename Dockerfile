@@ -1,18 +1,16 @@
-FROM centos:7 
-RUN echo "root:root" | chpasswd
-RUN yum -y install net-tools
+FROM ubuntu:18.04
 
 # install java
-ADD http://mirrors.linuxeye.com/jdk/jdk-7u80-linux-x64.tar.gz /usr/local/
-RUN cd /usr/local && tar -zxvf jdk-7u80-linux-x64.tar.gz && ls -lna
+ADD http://mirrors.linuxeye.com/jdk/jdk-8u172-linux-x64.tar.gz /usr/local/
+RUN cd /usr/local && tar -zxvf jdk-8u172-linux-x64.tar.gz && ls -lna
 
-ENV JAVA_HOME /usr/local/jdk1.7.0_80
+ENV JAVA_HOME /usr/local/jdk1.8.0_172
 ENV CLASSPATH ${JAVA_HOME}/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ENV PATH $PATH:${JAVA_HOME}/bin
 
 #install mycat
-ADD http://dl.mycat.io/1.6-RELEASE/Mycat-server-1.6-RELEASE-20161028204710-linux.tar.gz /usr/local
-RUN cd /usr/local && tar -zxvf Mycat-server-1.6-RELEASE-20161028204710-linux.tar.gz && ls -lna
+ADD http://dl.mycat.io/1.6.6.1/Mycat-server-1.6.6.1-release-20181031195535-linux.tar.gz /usr/local
+RUN cd /usr/local && tar -zxvf Mycat-server-1.6.6.1-release-20181031195535-linux.tar.gz && ls -lna
 
 #download mycat-ef-proxy
 #RUN mkdir -p /usr/local/proxy
