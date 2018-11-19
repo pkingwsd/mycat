@@ -20,4 +20,4 @@ VOLUME /usr/local/mycat/logs
 
 EXPOSE 8066 9066 8082
 
-CMD  /usr/local/mycat/bin/mycat console
+CMD  /usr/local/zookeeper-3.4.13/bin/zkServer.sh start && /usr/local/mycat/bin/mycat console
